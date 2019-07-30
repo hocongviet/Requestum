@@ -18,6 +18,7 @@ class RecipeViewController: UIViewController {
         setNavigationBar()
         setSearchBar()
         setTableView()
+        
     }
     
     
