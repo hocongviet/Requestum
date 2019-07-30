@@ -15,50 +15,20 @@ class RecipeViewController: UIViewController {
 
     @IBOutlet weak var recipeTableView: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
-    
-    var recipePuppyModel = [RecipePuppyModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         setSearchBar()
         setTableView()
-        
-        
-        networkManager.getModel(RecipePuppyJSON.self, fromAPI: .omelet) { [weak self] (result) in
-            switch result {
-            case .success(let model):
-                guard let results = model?.results else { return }
-                for result in results {
-                    var recipeModel = RecipePuppyModel()
-                    recipeModel.thumbnailUrl = result.thumbnail
-                    recipeModel.title = result.title
-                    recipeModel.ingredients = result.ingredients
-                    self?.recipePuppyModel.append(recipeModel)
-                    
-                    RecipeEntity.createRecipeEntity(thumbnailUrl: result.thumbnail, title: result.title, ingredients: result.ingredients)
-                    
-                    
-                }
-                
-                
-                
-                DispatchQueue.main.async {
-                    self?.recipeTableView.reloadData()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        getRecipiesFromAPI()
     }
     
-        
     private func setNavigationBar() {
         title = "Recipe labs"
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         self.navigationController?.navigationBar.barTintColor = UIColor.init(hexString: "2D8706")
-
     }
     
     private func setSearchBar() {
@@ -74,26 +44,49 @@ class RecipeViewController: UIViewController {
         recipeTableView.delegate = self
         recipeTableView.dataSource = self
         recipeTableView.register(RecipeTableViewCell.nib, forCellReuseIdentifier: RecipeTableViewCell.reuseIdentifier)
+        recipeTableView.estimatedRowHeight = 100
+        recipeTableView.rowHeight = UITableView.automaticDimension
+    }
+    
+    private func getRecipiesFromAPI() {
+        DispatchQueue.global().async {
+            self.networkManager.getModel(RecipePuppyJSON.self, fromAPI: .omelet) { [weak self] (result) in
+                switch result {
+                case .success(let model):
+                    guard let results = model?.results else { return }
+                    for result in results {
+                        RecipeEntity.createRecipeEntity(thumbnailUrl: result.thumbnail, title: result.title, ingredients: result.ingredients)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self?.recipeTableView.reloadData()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
 
 }
 
 extension RecipeViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 200
+//    }
     
 }
 
 extension RecipeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipePuppyModel.count
+        return RecipeEntity.getRecipeCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.reuseIdentifier, for: indexPath) as! RecipeTableViewCell
-        cell.recipePuppyModel = recipePuppyModel[indexPath.row]
+        let recipies = RecipeEntity.getAllRecipes()
+        cell.recipePuppyModel = recipies?[indexPath.row]
         return cell
     }
 

@@ -8,20 +8,56 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class RecipeEntity: NSManagedObject {
-    class func createRecipeEntity(thumbnailUrl: String?, title: String?, ingredients: String?) -> RecipeEntity {
-        //        if let userEntity = getUserEntity(username: username, context: CoreDataStack.shared.mainManagedObjectContext) {
-        //            return userEntity
-        //        } else {
-        let recipeEntity = RecipeEntity(context: CoreDataStack.shared.backgroundManagedObjectContext)
-        recipeEntity.thumbnailUrl = thumbnailUrl
-        recipeEntity.title = title
-        recipeEntity.ingredients = ingredients
-        CoreDataStack.shared.saveContext()
+    
+    class func getRecipeCount() -> Int {
+        return getAllRecipes()?.count ?? 0
+    }
+    
+    class func getRecipeEntity(_ title: String?) -> RecipeEntity? {
+        let context = CoreDataStack.shared.mainManagedObjectContext
+        let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
+        guard let title = title else { return nil }
+        request.predicate = NSPredicate(format: "title == %@", title)
+        request.fetchLimit = 1
         
-        return recipeEntity
-        //}
+        do {
+            let recipes = try context.fetch(request)
+            if recipes.count > 0 {
+                return recipes[0]
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
         
+        return nil
+        
+    }
+    
+    class func getAllRecipes() -> [RecipeEntity]? {
+        let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
+        do {
+            let recipes = try CoreDataStack.shared.mainManagedObjectContext.fetch(request)
+            return recipes
+        } catch {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+    
+    class func createRecipeEntity(thumbnailUrl: String?, title: String?, ingredients: String?) {
+        if RecipeEntity.getRecipeEntity(title) == nil {
+            let recipeEntity = RecipeEntity(context: CoreDataStack.shared.backgroundManagedObjectContext)
+            guard let thumbnailUrl = thumbnailUrl else { return }
+            PhotosManager.saveImageFromUrl(URL(string: thumbnailUrl)) { (image) in
+                recipeEntity.thumbnail = image.pngData()
+                recipeEntity.title = title
+                recipeEntity.ingredients = ingredients
+                CoreDataStack.shared.saveContext()
+            }
+            
+        }
     }
 }
