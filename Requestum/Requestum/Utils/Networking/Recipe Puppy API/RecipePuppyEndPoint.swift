@@ -27,9 +27,10 @@ extension RecipePuppyApi: EndpointType {
         switch self {
         case .omelet:
             var components = URLComponents()
-            components.queryItems = [URLQueryItem(name: "i", value: "onions,garlic")]
-            components.queryItems = [URLQueryItem(name: "q", value: "omelet")]
-            components.queryItems = [URLQueryItem(name: "p", value: "3")]
+            let ingredientsQueryItem = URLQueryItem(name: "i", value: "onions,garlic")
+            let searchQueryItem = URLQueryItem(name: "q", value: "omelet")
+            let pageQueryItem = URLQueryItem(name: "p", value: "3")
+            components.queryItems = [ingredientsQueryItem, searchQueryItem, pageQueryItem]
             guard let path = components.url else { return String() }
             return path.absoluteString
         case .search(let title):

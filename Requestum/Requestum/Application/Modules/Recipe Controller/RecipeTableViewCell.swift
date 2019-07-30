@@ -10,11 +10,19 @@ import UIKit
 
 class RecipeTableViewCell: UITableViewCell, NibLoadable {
     
+    @IBOutlet weak var recipeImageView: UIImageView!
+    @IBOutlet weak var recipeTitle: UILabel!
+    @IBOutlet weak var recipeDescription: UILabel!
+
     static let reuseIdentifier = "RecipeTableViewCellIdentifier"
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        recipeImageView.makeRounded()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,4 +31,8 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
         // Configure the view for the selected state
     }
     
+//    var recipePuppyModel: RecipePuppyModel? {
+//        
+//    }
+//    
 }
