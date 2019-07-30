@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RecipeViewController: UIViewController {
     
@@ -34,7 +35,14 @@ class RecipeViewController: UIViewController {
                     recipeModel.title = result.title
                     recipeModel.ingredients = result.ingredients
                     self?.recipePuppyModel.append(recipeModel)
+                    
+                    RecipeEntity.createRecipeEntity(thumbnailUrl: result.thumbnail, title: result.title, ingredients: result.ingredients)
+                    
+                    
                 }
+                
+                
+                
                 DispatchQueue.main.async {
                     self?.recipeTableView.reloadData()
                 }
