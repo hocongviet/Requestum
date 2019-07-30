@@ -9,6 +9,8 @@
 import UIKit
 
 class RecipeViewController: UIViewController {
+    
+    let networkManager = NetworkManager(environment: .recipePuppy)
 
     @IBOutlet weak var recipeTableView: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
@@ -19,6 +21,16 @@ class RecipeViewController: UIViewController {
         setSearchBar()
         setTableView()
         
+        
+        networkManager.getModel(RecipePuppyJSON.self, fromAPI: .omelet) { [weak self] (result) in
+            switch result {
+            case .success(let model):
+                print("successsuccesssuccess")
+                print(model)
+            case .failure(let error):
+                print("failurefailurefailure")
+            }
+        }
     }
     
     
@@ -31,6 +43,10 @@ class RecipeViewController: UIViewController {
     }
     
     private func setSearchBar() {
+//        searchController.searchBar.barTintColor = .white
+        //searchController.searchBar.tintColor = .white
+        //searchController.searchBar.backgroundColor = .white
+
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
