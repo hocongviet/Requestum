@@ -15,7 +15,6 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var recipeTableView: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
     
-    //var recipePuppyJSON: RecipePuppyJSON?
     var recipePuppyModel = [RecipePuppyModel]()
 
     override func viewDidLoad() {
@@ -28,8 +27,6 @@ class RecipeViewController: UIViewController {
         networkManager.getModel(RecipePuppyJSON.self, fromAPI: .omelet) { [weak self] (result) in
             switch result {
             case .success(let model):
-                print("successsuccesssuccess")
-                print(model)
                 guard let results = model?.results else { return }
                 for result in results {
                     var recipeModel = RecipePuppyModel()
@@ -38,12 +35,11 @@ class RecipeViewController: UIViewController {
                     recipeModel.description = result.ingredients
                     self?.recipePuppyModel.append(recipeModel)
                 }
-                //self?.recipePuppyJSON = model
                 DispatchQueue.main.async {
                     self?.recipeTableView.reloadData()
                 }
             case .failure(let error):
-                print("failurefailurefailure")
+                print(error.localizedDescription)
             }
         }
     }
@@ -89,15 +85,8 @@ extension RecipeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.reuseIdentifier, for: indexPath) as! RecipeTableViewCell
-        guard let thumbnailUrl = recipePuppyModel[indexPath.row].thumbnailUrl else { return cell }
-        PhotosManager.saveImageFromUrl(URL(string: thumbnailUrl)) { (image) in
-            cell.recipeImageView.image = image
-        }
-        cell.recipeTitle.text = recipePuppyModel[indexPath.row].title
-        cell.recipeDescription.text = recipePuppyModel[indexPath.row].description
+        cell.recipePuppyModel = recipePuppyModel[indexPath.row]
         return cell
     }
-    
-    
 
 }

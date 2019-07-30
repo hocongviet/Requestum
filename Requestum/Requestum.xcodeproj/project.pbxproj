@@ -29,7 +29,6 @@
 		EA5D11D222F0B1D2003B5B58 /* RecipePuppyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11D122F0B1D2003B5B58 /* RecipePuppyJSON.swift */; };
 		EA5D11D622F0C1D8003B5B58 /* PhotosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11D522F0C1D8003B5B58 /* PhotosManager.swift */; };
 		EA5D11D822F0C3AE003B5B58 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11D722F0C3AE003B5B58 /* UIImageView+Extensions.swift */; };
-		EA5D11DA22F0CB40003B5B58 /* CacheImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11D922F0CB40003B5B58 /* CacheImageView.swift */; };
 		EA5D11DC22F0CBBF003B5B58 /* RecipePuppyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11DB22F0CBBF003B5B58 /* RecipePuppyModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +57,6 @@
 		EA5D11D122F0B1D2003B5B58 /* RecipePuppyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePuppyJSON.swift; sourceTree = "<group>"; };
 		EA5D11D522F0C1D8003B5B58 /* PhotosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosManager.swift; sourceTree = "<group>"; };
 		EA5D11D722F0C3AE003B5B58 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
-		EA5D11D922F0CB40003B5B58 /* CacheImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageView.swift; sourceTree = "<group>"; };
 		EA5D11DB22F0CBBF003B5B58 /* RecipePuppyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePuppyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,7 +150,6 @@
 				EA5D11DB22F0CBBF003B5B58 /* RecipePuppyModel.swift */,
 				EA5D11A822F0905B003B5B58 /* RecipeTableViewCell.xib */,
 				EA5D11A522F08FD4003B5B58 /* RecipeViewController.swift */,
-				EA5D11D922F0CB40003B5B58 /* CacheImageView.swift */,
 			);
 			path = "Recipe Controller";
 			sourceTree = "<group>";
@@ -322,7 +319,6 @@
 				EA5D11D222F0B1D2003B5B58 /* RecipePuppyJSON.swift in Sources */,
 				EA5D11C722F0ADA9003B5B58 /* EndpointType.swift in Sources */,
 				EA5D11CB22F0ADC0003B5B58 /* HTTPMethod.swift in Sources */,
-				EA5D11DA22F0CB40003B5B58 /* CacheImageView.swift in Sources */,
 				EA5D11A622F08FD4003B5B58 /* RecipeViewController.swift in Sources */,
 				EA5D11BC22F0AC3D003B5B58 /* URLParameterEncoding.swift in Sources */,
 			);

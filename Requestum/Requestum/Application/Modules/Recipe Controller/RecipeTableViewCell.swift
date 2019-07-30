@@ -31,8 +31,21 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
         // Configure the view for the selected state
     }
     
-//    var recipePuppyModel: RecipePuppyModel? {
-//        
-//    }
-//    
+    var recipePuppyModel: RecipePuppyModel? {
+        didSet {
+            if let thumbnailUrl = recipePuppyModel?.thumbnailUrl {
+                if thumbnailUrl.isEmpty {
+                    self.recipeImageView.image = #imageLiteral(resourceName: "empty-plate")
+                } else {
+                    PhotosManager.saveImageFromUrl(URL(string: thumbnailUrl)) { (image) in
+                        self.recipeImageView.image = image
+                    }
+                }
+            }
+            
+            recipeTitle.text = recipePuppyModel?.title
+            recipeDescription.text = recipePuppyModel?.description
+        }
+    }
+    
 }
