@@ -50,13 +50,11 @@ class RecipeEntity: NSManagedObject {
     class func createRecipeEntity(thumbnailUrl: String?, title: String?, ingredients: String?) {
         if RecipeEntity.getRecipeEntity(title) == nil {
             let recipeEntity = RecipeEntity(context: CoreDataStack.shared.backgroundManagedObjectContext)
-            guard let thumbnailUrl = thumbnailUrl else { return }
-            PhotosManager.saveImageFromUrl(URL(string: thumbnailUrl)) { (image) in
-                recipeEntity.thumbnail = image.pngData()
-                recipeEntity.title = title
-                recipeEntity.ingredients = ingredients
-                CoreDataStack.shared.saveContext()
-            }
+
+            recipeEntity.thumbnail = thumbnailUrl
+            recipeEntity.title = title
+            recipeEntity.ingredients = ingredients
+            CoreDataStack.shared.saveContext()
             
         }
     }
