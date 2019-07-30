@@ -108,9 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				EA5D11B422F09C31003B5B58 /* Recipe Controller */,
-				EA5D11A722F0905B003B5B58 /* RecipeTableViewCell.swift */,
-				EA5D11A822F0905B003B5B58 /* RecipeTableViewCell.xib */,
-				EA5D11A522F08FD4003B5B58 /* RecipeViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -118,6 +115,9 @@
 		EA5D11B422F09C31003B5B58 /* Recipe Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EA5D11A722F0905B003B5B58 /* RecipeTableViewCell.swift */,
+				EA5D11A822F0905B003B5B58 /* RecipeTableViewCell.xib */,
+				EA5D11A522F08FD4003B5B58 /* RecipeViewController.swift */,
 			);
 			path = "Recipe Controller";
 			sourceTree = "<group>";
