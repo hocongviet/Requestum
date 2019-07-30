@@ -12,7 +12,7 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
     
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var recipeTitle: UILabel!
-    @IBOutlet weak var recipeDescription: UILabel!
+    @IBOutlet weak var recipeIngredients: UILabel!
 
     static let reuseIdentifier = "RecipeTableViewCellIdentifier"
 
@@ -44,7 +44,7 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
             }
             
             recipeTitle.text = recipePuppyModel?.title
-            recipeDescription.text = recipePuppyModel?.description
+            recipeIngredients.text = recipePuppyModel?.ingredients
         }
     }
     

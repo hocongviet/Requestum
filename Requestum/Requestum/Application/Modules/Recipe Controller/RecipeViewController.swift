@@ -32,7 +32,7 @@ class RecipeViewController: UIViewController {
                     var recipeModel = RecipePuppyModel()
                     recipeModel.thumbnailUrl = result.thumbnail
                     recipeModel.title = result.title
-                    recipeModel.description = result.ingredients
+                    recipeModel.ingredients = result.ingredients
                     self?.recipePuppyModel.append(recipeModel)
                 }
                 DispatchQueue.main.async {

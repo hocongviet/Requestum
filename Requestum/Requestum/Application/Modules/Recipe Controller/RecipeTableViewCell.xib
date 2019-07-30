@@ -53,8 +53,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="recipeDescription" destination="xQ5-8R-JGz" id="tyO-rW-KB1"/>
                 <outlet property="recipeImageView" destination="cFh-OH-h6V" id="EzK-gI-LXU"/>
+                <outlet property="recipeIngredients" destination="xQ5-8R-JGz" id="tyO-rW-KB1"/>
                 <outlet property="recipeTitle" destination="H09-WJ-2Mu" id="UzW-gS-tdQ"/>
             </connections>
             <point key="canvasLocation" x="6.5217391304347831" y="118.86160714285714"/>

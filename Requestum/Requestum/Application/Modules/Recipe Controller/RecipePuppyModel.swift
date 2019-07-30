@@ -11,5 +11,5 @@ import Foundation
 struct RecipePuppyModel {
     var thumbnailUrl: String?
     var title: String?
-    var description: String?
+    var ingredients: String?
 }

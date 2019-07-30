@@ -30,6 +30,7 @@
 		EA5D11D622F0C1D8003B5B58 /* PhotosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11D522F0C1D8003B5B58 /* PhotosManager.swift */; };
 		EA5D11D822F0C3AE003B5B58 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11D722F0C3AE003B5B58 /* UIImageView+Extensions.swift */; };
 		EA5D11DC22F0CBBF003B5B58 /* RecipePuppyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11DB22F0CBBF003B5B58 /* RecipePuppyModel.swift */; };
+		EAD702F922F0E8B700167418 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAD702F722F0E8B700167418 /* Database.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		EA5D11D522F0C1D8003B5B58 /* PhotosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosManager.swift; sourceTree = "<group>"; };
 		EA5D11D722F0C3AE003B5B58 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		EA5D11DB22F0CBBF003B5B58 /* RecipePuppyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePuppyModel.swift; sourceTree = "<group>"; };
+		EAD702F822F0E8B700167418 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			children = (
 				EA5D119A22F08E9F003B5B58 /* Assets.xcassets */,
 				EA5D119F22F08E9F003B5B58 /* Info.plist */,
+				EAD702F722F0E8B700167418 /* Database.xcdatamodeld */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				EA5D11BE22F0AC48003B5B58 /* JSONParameterEncoder.swift in Sources */,
 				EA5D11BA22F0AC2F003B5B58 /* ParameterEncoding.swift in Sources */,
 				EA5D11C422F0AD79003B5B58 /* NetworkManager.swift in Sources */,
+				EAD702F922F0E8B700167418 /* Database.xcdatamodeld in Sources */,
 				EA5D11A922F0905B003B5B58 /* RecipeTableViewCell.swift in Sources */,
 				EA5D11C922F0ADB5003B5B58 /* Router.swift in Sources */,
 				EA5D11C122F0ACB8003B5B58 /* RecipePuppyEndPoint.swift in Sources */,
@@ -520,6 +524,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EAD702F722F0E8B700167418 /* Database.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EAD702F822F0E8B700167418 /* Database.xcdatamodel */,
+			);
+			currentVersion = EAD702F822F0E8B700167418 /* Database.xcdatamodel */;
+			path = Database.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EA5D118822F08E9E003B5B58 /* Project object */;
 }
