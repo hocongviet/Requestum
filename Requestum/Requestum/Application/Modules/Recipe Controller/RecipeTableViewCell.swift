@@ -16,9 +16,17 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
 
     static let reuseIdentifier = "RecipeTableViewCellIdentifier"
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         recipeImageView.makeRounded()
+        setSeparatorEndToEnd()
+    }
+    
+    private func setSeparatorEndToEnd() {
+        preservesSuperviewLayoutMargins = false
+        separatorInset = UIEdgeInsets.zero
+        layoutMargins = UIEdgeInsets.zero
     }
     
     override func layoutSubviews() {

@@ -52,6 +52,7 @@
                     <constraint firstItem="cFh-OH-h6V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="xZu-QS-oxE"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.95890945196151733" green="0.95963555574417114" blue="0.95902186632156372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="recipeImageView" destination="cFh-OH-h6V" id="EzK-gI-LXU"/>

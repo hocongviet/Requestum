@@ -32,12 +32,18 @@ class RecipeViewController: UIViewController {
     }
     
     private func setSearchBar() {
-//        searchController.searchBar.barTintColor = .white
-        //searchController.searchBar.tintColor = .white
-        //searchController.searchBar.backgroundColor = .white
 
+        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        
+        if let txfSearchField = searchController.searchBar.value(forKey: "_searchField") as? UITextField {
+            txfSearchField.borderStyle = .none
+            txfSearchField.backgroundColor = .white
+            txfSearchField.layer.cornerRadius = 12
+            txfSearchField.layer.masksToBounds = true
+        }
+        
     }
     
     private func setTableView() {
