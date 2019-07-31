@@ -63,8 +63,49 @@ class SearchRecipeViewController: UIViewController {
 extension SearchRecipeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.reload(_:)), object: searchBar)
+        searchBar.isLoading = true
+        if searchText.isEmpty {
+            perform(#selector(self.reload(_:)), with: searchBar, afterDelay: 0.0)
+        } else {
+            self.recipeCellModels.removeAll()
+            let oldValue = self.recipeCellModels.count
+            var recipeCellModel = RecipeCellModel()
+            recipeCellModel.thumbnailUrl = "searching.thumbnail"
+            recipeCellModel.title = "searching.thumbnail.title"
+            recipeCellModel.ingredients = "searching.thumbnail.ingredients"
+            self.recipeCellModels.append(recipeCellModel)
+            DispatchQueue.main.async {
+//                if let indexPaths = DiffUtil.getInsertionItems(oldValue: oldValue, newValue: self.searches.count) {
+//                    DiffUtil.reloadTableViewRows(self.searchTableView, atIndexPaths: indexPaths)
+//                }
+                self.recipeTableView.reloadData()
+            }
+            perform(#selector(self.reload(_:)), with: searchBar, afterDelay: 0.5)
+        }
+        
+    }
+    
+    @objc func reload(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text, searchText.trimmingCharacters(in: .whitespaces) != "" else {
+            print("nothing to search")
+            let oldValue = recipeCellModels.count
+            recipeCellModels.removeAll()
+            
+            DispatchQueue.main.async {
+                searchBar.isLoading = false
+//                if let indexPaths = DiffUtil.getDeletionItems(oldValue: oldValue) {
+//                    self.searchTableView.deleteRows(at: indexPaths, with: .fade)
+//                }
+                self.recipeTableView.reloadData()
+
+            }
+            return
+        }
+        
         networkManager.getModel(RecipePuppyJSON.self, fromAPI: .search(title: searchText)) { [weak self] (result) in
-            self?.recipeCellModels.removeAll()
+            guard let self = self else { return }
+            self.recipeCellModels.removeAll()
             switch result {
             case .success(let model):
                 guard let results = model?.results else { return }
@@ -73,10 +114,23 @@ extension SearchRecipeViewController: UISearchBarDelegate {
                     recipeCellModel.thumbnailUrl = result.thumbnail
                     recipeCellModel.title = result.title
                     recipeCellModel.ingredients = result.ingredients
-                    self?.recipeCellModels.append(recipeCellModel)
+                    self.recipeCellModels.append(recipeCellModel)
                 }
+
+                if self.recipeCellModels.isEmpty {
+                    var recipeCellModel = RecipeCellModel()
+                    recipeCellModel.thumbnailUrl = "result.thumbnail"
+                    recipeCellModel.title = "result.title"
+                    recipeCellModel.ingredients = "result.ingredients"
+                    self.recipeCellModels.append(recipeCellModel)
+                }
+                
                 DispatchQueue.main.async {
-                    self?.recipeTableView.reloadData()
+                    searchBar.isLoading = false
+//                    if let indexPaths = DiffUtil.getInsertionItems(oldValue: oldValue, newValue: self.searches.count) {
+//                        DiffUtil.reloadTableViewRows(self.searchTableView, atIndexPaths: indexPaths, animation: .fade)
+//                    }
+                    self.recipeTableView.reloadData()
                 }
             case .failure(let error):
                 print(error.localizedDescription)
