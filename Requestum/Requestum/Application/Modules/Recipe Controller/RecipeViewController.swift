@@ -11,10 +11,10 @@ import CoreData
 
 class RecipeViewController: UIViewController {
 
+    let recipeModel = RecipeModel()
     @IBOutlet weak var recipeTableView: UITableView!
     let searchRecipeVC = SearchRecipeViewController()
     var searchController: UISearchController?
-    let recipeModel = RecipeModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,18 +37,9 @@ class RecipeViewController: UIViewController {
         // Setup search controller
         searchController = UISearchController(searchResultsController: searchRecipeVC)
         searchController?.searchBar.delegate = searchRecipeVC
-        searchController?.searchBar.placeholder = "Search"
         definesPresentationContext = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        
-        if let txfSearchField = searchController?.searchBar.value(forKey: "_searchField") as? UITextField {
-            txfSearchField.borderStyle = .none
-            txfSearchField.backgroundColor = .white
-            txfSearchField.layer.cornerRadius = 12
-            txfSearchField.layer.masksToBounds = true
-        }
-        
     }
     
     private func setTableView() {
@@ -76,5 +67,4 @@ extension RecipeViewController: UITableViewDataSource {
         cell.recipePuppyEntity = recipies?[indexPath.row]
         return cell
     }
-
 }

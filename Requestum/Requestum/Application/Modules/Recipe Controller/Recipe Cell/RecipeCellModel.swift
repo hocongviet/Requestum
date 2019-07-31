@@ -12,4 +12,5 @@ struct RecipeCellModel {
     var thumbnailUrl: String?
     var title: String?
     var ingredients: String?
+    var href: String?
 }

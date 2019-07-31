@@ -9,8 +9,9 @@
 import Foundation
 
 class RecipeModel {
+    
     let networkManager = NetworkManager(environment: .recipePuppy)
-
+    
     func getRecipiesFromAPI(completion: @escaping () -> ()) {
         DispatchQueue.global().async {
             self.networkManager.getModel(RecipePuppyJSON.self, fromAPI: .omelet) { (result) in
@@ -20,7 +21,6 @@ class RecipeModel {
                     for result in results {
                         RecipeEntity.createRecipeEntity(thumbnailUrl: result.thumbnail, title: result.title, ingredients: result.ingredients)
                     }
-                    
                     DispatchQueue.main.async {
                         completion()
                     }
