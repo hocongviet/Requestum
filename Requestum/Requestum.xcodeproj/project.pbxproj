@@ -33,6 +33,7 @@
 		EA8268B222F1F623006FBB4B /* RecipeDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268B122F1F623006FBB4B /* RecipeDataSourceDelegate.swift */; };
 		EA8268B522F1FCF6006FBB4B /* SearchRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268B322F1FCF6006FBB4B /* SearchRecipeViewController.swift */; };
 		EA8268B822F2530C006FBB4B /* UISearchBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268B722F2530C006FBB4B /* UISearchBar+Extensions.swift */; };
+		EA8268BA22F255D9006FBB4B /* DiffUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268B922F255D9006FBB4B /* DiffUtil.swift */; };
 		EAD702F922F0E8B700167418 /* Requestum.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAD702F722F0E8B700167418 /* Requestum.xcdatamodeld */; };
 		EAD702FC22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD702FB22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift */; };
 		EAD702FE22F0EA2200167418 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD702FD22F0EA2200167418 /* CoreDataStack.swift */; };
@@ -67,6 +68,7 @@
 		EA8268B122F1F623006FBB4B /* RecipeDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDataSourceDelegate.swift; sourceTree = "<group>"; };
 		EA8268B322F1FCF6006FBB4B /* SearchRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipeViewController.swift; sourceTree = "<group>"; };
 		EA8268B722F2530C006FBB4B /* UISearchBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extensions.swift"; sourceTree = "<group>"; };
+		EA8268B922F255D9006FBB4B /* DiffUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffUtil.swift; sourceTree = "<group>"; };
 		EAD702F822F0E8B700167418 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		EAD702FB22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EAD702FD22F0EA2200167418 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				EA5D11AB22F090AF003B5B58 /* NibLoadable.swift */,
 				EA5D11D522F0C1D8003B5B58 /* PhotosManager.swift */,
+				EA8268B922F255D9006FBB4B /* DiffUtil.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				EA5D11BE22F0AC48003B5B58 /* JSONParameterEncoder.swift in Sources */,
 				EA5D11BA22F0AC2F003B5B58 /* ParameterEncoding.swift in Sources */,
 				EA5D11C422F0AD79003B5B58 /* NetworkManager.swift in Sources */,
+				EA8268BA22F255D9006FBB4B /* DiffUtil.swift in Sources */,
 				EAD702F922F0E8B700167418 /* Requestum.xcdatamodeld in Sources */,
 				EA5D11A922F0905B003B5B58 /* RecipeTableViewCell.swift in Sources */,
 				EA5D11C922F0ADB5003B5B58 /* Router.swift in Sources */,
