@@ -27,24 +27,24 @@ class SearchRecipeViewController: UIViewController {
         recipeTableView.estimatedRowHeight = 100
         recipeTableView.rowHeight = UITableView.automaticDimension
         
-        networkManager.getModel(RecipePuppyJSON.self, fromAPI: .search(title: "tomato")) { [weak self] (result) in
-            switch result {
-            case .success(let model):
-                guard let results = model?.results else { return }
-                for result in results {
-                    var recipeCellModel = RecipeCellModel()
-                    recipeCellModel.thumbnailUrl = result.thumbnail
-                    recipeCellModel.title = result.title
-                    recipeCellModel.ingredients = result.ingredients
-                    self?.recipeCellModels.append(recipeCellModel)
-                }
-                DispatchQueue.main.async {
-                    self?.recipeTableView.reloadData()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+//        networkManager.getModel(RecipePuppyJSON.self, fromAPI: .search(title: "tomato")) { [weak self] (result) in
+//            switch result {
+//            case .success(let model):
+//                guard let results = model?.results else { return }
+//                for result in results {
+//                    var recipeCellModel = RecipeCellModel()
+//                    recipeCellModel.thumbnailUrl = result.thumbnail
+//                    recipeCellModel.title = result.title
+//                    recipeCellModel.ingredients = result.ingredients
+//                    self?.recipeCellModels.append(recipeCellModel)
+//                }
+//                DispatchQueue.main.async {
+//                    self?.recipeTableView.reloadData()
+//                }
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
     }
 
 
@@ -63,6 +63,25 @@ class SearchRecipeViewController: UIViewController {
 extension SearchRecipeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
+        networkManager.getModel(RecipePuppyJSON.self, fromAPI: .search(title: searchText)) { [weak self] (result) in
+            self?.recipeCellModels.removeAll()
+            switch result {
+            case .success(let model):
+                guard let results = model?.results else { return }
+                for result in results {
+                    var recipeCellModel = RecipeCellModel()
+                    recipeCellModel.thumbnailUrl = result.thumbnail
+                    recipeCellModel.title = result.title
+                    recipeCellModel.ingredients = result.ingredients
+                    self?.recipeCellModels.append(recipeCellModel)
+                }
+                DispatchQueue.main.async {
+                    self?.recipeTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
