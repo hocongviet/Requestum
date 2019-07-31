@@ -31,13 +31,13 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
         // Configure the view for the selected state
     }
     
-    var recipePuppyModel: RecipePuppyModel? {
+    var recipePuppyModel: RecipeEntity? {
         didSet {
-            if let thumbnailUrl = recipePuppyModel?.thumbnailUrl {
-                if thumbnailUrl.isEmpty {
+            if let thumbnail = recipePuppyModel?.thumbnail {
+                if thumbnail.isEmpty {
                     self.recipeImageView.image = #imageLiteral(resourceName: "empty-plate")
                 } else {
-                    PhotosManager.saveImageFromUrl(URL(string: thumbnailUrl)) { (image) in
+                    PhotosManager.saveImageFromUrl(URL(string: thumbnail)) { (image) in
                         self.recipeImageView.image = image
                     }
                 }

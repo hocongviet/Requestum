@@ -29,8 +29,9 @@
 		EA5D11D222F0B1D2003B5B58 /* RecipePuppyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11D122F0B1D2003B5B58 /* RecipePuppyJSON.swift */; };
 		EA5D11D622F0C1D8003B5B58 /* PhotosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11D522F0C1D8003B5B58 /* PhotosManager.swift */; };
 		EA5D11D822F0C3AE003B5B58 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11D722F0C3AE003B5B58 /* UIImageView+Extensions.swift */; };
-		EA5D11DC22F0CBBF003B5B58 /* RecipePuppyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11DB22F0CBBF003B5B58 /* RecipePuppyModel.swift */; };
-		EAD702F922F0E8B700167418 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAD702F722F0E8B700167418 /* Database.xcdatamodeld */; };
+		EAD702F922F0E8B700167418 /* Requestum.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAD702F722F0E8B700167418 /* Requestum.xcdatamodeld */; };
+		EAD702FC22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD702FB22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift */; };
+		EAD702FE22F0EA2200167418 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD702FD22F0EA2200167418 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,8 +59,9 @@
 		EA5D11D122F0B1D2003B5B58 /* RecipePuppyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePuppyJSON.swift; sourceTree = "<group>"; };
 		EA5D11D522F0C1D8003B5B58 /* PhotosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosManager.swift; sourceTree = "<group>"; };
 		EA5D11D722F0C3AE003B5B58 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
-		EA5D11DB22F0CBBF003B5B58 /* RecipePuppyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePuppyModel.swift; sourceTree = "<group>"; };
 		EAD702F822F0E8B700167418 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
+		EAD702FB22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EAD702FD22F0EA2200167418 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		EA5D11B022F09B97003B5B58 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				EAD702FA22F0E99500167418 /* Core Data */,
 				EA5D11B722F0AB3A003B5B58 /* Networking */,
 				EA5D11B122F09B9F003B5B58 /* Extensions */,
 				EA5D11AF22F09B7B003B5B58 /* Helpers */,
@@ -149,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				EA5D11A722F0905B003B5B58 /* RecipeTableViewCell.swift */,
-				EA5D11DB22F0CBBF003B5B58 /* RecipePuppyModel.swift */,
 				EA5D11A822F0905B003B5B58 /* RecipeTableViewCell.xib */,
 				EA5D11A522F08FD4003B5B58 /* RecipeViewController.swift */,
 			);
@@ -170,7 +172,7 @@
 			children = (
 				EA5D119A22F08E9F003B5B58 /* Assets.xcassets */,
 				EA5D119F22F08E9F003B5B58 /* Info.plist */,
-				EAD702F722F0E8B700167418 /* Database.xcdatamodeld */,
+				EAD702F722F0E8B700167418 /* Requestum.xcdatamodeld */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -231,6 +233,15 @@
 				EA5D11D122F0B1D2003B5B58 /* RecipePuppyJSON.swift */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		EAD702FA22F0E99500167418 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				EAD702FB22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift */,
+				EAD702FD22F0EA2200167418 /* CoreDataStack.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,16 +322,17 @@
 				EA5D11BE22F0AC48003B5B58 /* JSONParameterEncoder.swift in Sources */,
 				EA5D11BA22F0AC2F003B5B58 /* ParameterEncoding.swift in Sources */,
 				EA5D11C422F0AD79003B5B58 /* NetworkManager.swift in Sources */,
-				EAD702F922F0E8B700167418 /* Database.xcdatamodeld in Sources */,
+				EAD702F922F0E8B700167418 /* Requestum.xcdatamodeld in Sources */,
 				EA5D11A922F0905B003B5B58 /* RecipeTableViewCell.swift in Sources */,
 				EA5D11C922F0ADB5003B5B58 /* Router.swift in Sources */,
 				EA5D11C122F0ACB8003B5B58 /* RecipePuppyEndPoint.swift in Sources */,
 				EA5D11AE22F096A4003B5B58 /* UIColor+Extensions.swift in Sources */,
 				EA5D11AC22F090AF003B5B58 /* NibLoadable.swift in Sources */,
 				EA5D119422F08E9E003B5B58 /* AppDelegate.swift in Sources */,
-				EA5D11DC22F0CBBF003B5B58 /* RecipePuppyModel.swift in Sources */,
+				EAD702FC22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift in Sources */,
 				EA5D11D822F0C3AE003B5B58 /* UIImageView+Extensions.swift in Sources */,
 				EA5D11D222F0B1D2003B5B58 /* RecipePuppyJSON.swift in Sources */,
+				EAD702FE22F0EA2200167418 /* CoreDataStack.swift in Sources */,
 				EA5D11C722F0ADA9003B5B58 /* EndpointType.swift in Sources */,
 				EA5D11CB22F0ADC0003B5B58 /* HTTPMethod.swift in Sources */,
 				EA5D11A622F08FD4003B5B58 /* RecipeViewController.swift in Sources */,
@@ -526,13 +538,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EAD702F722F0E8B700167418 /* Database.xcdatamodeld */ = {
+		EAD702F722F0E8B700167418 /* Requestum.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				EAD702F822F0E8B700167418 /* Database.xcdatamodel */,
 			);
 			currentVersion = EAD702F822F0E8B700167418 /* Database.xcdatamodel */;
-			path = Database.xcdatamodeld;
+			path = Requestum.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
