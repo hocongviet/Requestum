@@ -39,9 +39,9 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
         // Configure the view for the selected state
     }
     
-    var recipePuppyModel: RecipeEntity? {
+    var recipePuppyEntity: RecipeEntity? {
         didSet {
-            if let thumbnail = recipePuppyModel?.thumbnail {
+            if let thumbnail = recipePuppyEntity?.thumbnail {
                 if thumbnail.isEmpty {
                     self.recipeImageView.image = #imageLiteral(resourceName: "empty-plate")
                 } else {
@@ -51,8 +51,8 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
                 }
             }
             
-            recipeTitle.text = recipePuppyModel?.title
-            recipeIngredients.text = recipePuppyModel?.ingredients
+            recipeTitle.text = recipePuppyEntity?.title
+            recipeIngredients.text = recipePuppyEntity?.ingredients
         }
     }
     
