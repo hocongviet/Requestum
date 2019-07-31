@@ -10,19 +10,20 @@ import UIKit
 import CoreData
 
 class RecipeViewController: UIViewController {
-    
-    let networkManager = NetworkManager(environment: .recipePuppy)
 
     @IBOutlet weak var recipeTableView: UITableView!
     let searchRecipeVC = SearchRecipeViewController()
     var searchController: UISearchController?
+    let recipeModel = RecipeModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         setSearchBar()
         setTableView()
-        getRecipiesFromAPI()
+        recipeModel.getRecipiesFromAPI {
+            self.recipeTableView.reloadData()
+        }
     }
     
     private func setNavigationBar() {
@@ -33,18 +34,11 @@ class RecipeViewController: UIViewController {
     }
     
     private func setSearchBar() {
-        // Set delegate for did select actions
-        //searchController?.searchBar.delegate = searchRecipeVC
-
         // Setup search controller
         searchController = UISearchController(searchResultsController: searchRecipeVC)
         searchController?.searchBar.delegate = searchRecipeVC
-        //searchController?.dimsBackgroundDuringPresentation = false
-        //searchController?.hidesNavigationBarDuringPresentation = false
         searchController?.searchBar.placeholder = "Search"
         definesPresentationContext = true
-        //navigationItem.titleView = searchController?.searchBar
-        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         
@@ -65,26 +59,6 @@ class RecipeViewController: UIViewController {
         recipeTableView.rowHeight = UITableView.automaticDimension
     }
     
-    private func getRecipiesFromAPI() {
-        DispatchQueue.global().async {
-            self.networkManager.getModel(RecipePuppyJSON.self, fromAPI: .omelet) { [weak self] (result) in
-                switch result {
-                case .success(let model):
-                    guard let results = model?.results else { return }
-                    for result in results {
-                        RecipeEntity.createRecipeEntity(thumbnailUrl: result.thumbnail, title: result.title, ingredients: result.ingredients)
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self?.recipeTableView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        }
-    }
-
 }
 
 extension RecipeViewController: UITableViewDelegate {
