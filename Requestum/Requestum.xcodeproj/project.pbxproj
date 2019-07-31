@@ -30,10 +30,10 @@
 		EA5D11D622F0C1D8003B5B58 /* PhotosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11D522F0C1D8003B5B58 /* PhotosManager.swift */; };
 		EA5D11D822F0C3AE003B5B58 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D11D722F0C3AE003B5B58 /* UIImageView+Extensions.swift */; };
 		EA8268AE22F1F41A006FBB4B /* RecipeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268AD22F1F41A006FBB4B /* RecipeCellModel.swift */; };
-		EA8268B222F1F623006FBB4B /* RecipeDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268B122F1F623006FBB4B /* RecipeDataSourceDelegate.swift */; };
 		EA8268B522F1FCF6006FBB4B /* SearchRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268B322F1FCF6006FBB4B /* SearchRecipeViewController.swift */; };
 		EA8268B822F2530C006FBB4B /* UISearchBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268B722F2530C006FBB4B /* UISearchBar+Extensions.swift */; };
 		EA8268BA22F255D9006FBB4B /* DiffUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268B922F255D9006FBB4B /* DiffUtil.swift */; };
+		EA8268BE22F2595E006FBB4B /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268BD22F2595E006FBB4B /* RecipeModel.swift */; };
 		EAD702F922F0E8B700167418 /* Requestum.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAD702F722F0E8B700167418 /* Requestum.xcdatamodeld */; };
 		EAD702FC22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD702FB22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift */; };
 		EAD702FE22F0EA2200167418 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD702FD22F0EA2200167418 /* CoreDataStack.swift */; };
@@ -65,10 +65,10 @@
 		EA5D11D522F0C1D8003B5B58 /* PhotosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosManager.swift; sourceTree = "<group>"; };
 		EA5D11D722F0C3AE003B5B58 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		EA8268AD22F1F41A006FBB4B /* RecipeCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCellModel.swift; sourceTree = "<group>"; };
-		EA8268B122F1F623006FBB4B /* RecipeDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDataSourceDelegate.swift; sourceTree = "<group>"; };
 		EA8268B322F1FCF6006FBB4B /* SearchRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipeViewController.swift; sourceTree = "<group>"; };
 		EA8268B722F2530C006FBB4B /* UISearchBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extensions.swift"; sourceTree = "<group>"; };
 		EA8268B922F255D9006FBB4B /* DiffUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffUtil.swift; sourceTree = "<group>"; };
+		EA8268BD22F2595E006FBB4B /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		EAD702F822F0E8B700167418 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		EAD702FB22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EAD702FD22F0EA2200167418 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -163,12 +163,10 @@
 		EA5D11B422F09C31003B5B58 /* Recipe Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EA8268AD22F1F41A006FBB4B /* RecipeCellModel.swift */,
-				EA5D11A722F0905B003B5B58 /* RecipeTableViewCell.swift */,
-				EA5D11A822F0905B003B5B58 /* RecipeTableViewCell.xib */,
+				EA8268BC22F2592E006FBB4B /* Recipe Cell */,
 				EA5D11A522F08FD4003B5B58 /* RecipeViewController.swift */,
-				EA8268B122F1F623006FBB4B /* RecipeDataSourceDelegate.swift */,
-				EA8268B322F1FCF6006FBB4B /* SearchRecipeViewController.swift */,
+				EA8268BD22F2595E006FBB4B /* RecipeModel.swift */,
+				EA8268BB22F25909006FBB4B /* Search Controller */,
 			);
 			path = "Recipe Controller";
 			sourceTree = "<group>";
@@ -248,6 +246,24 @@
 				EA5D11D122F0B1D2003B5B58 /* RecipePuppyJSON.swift */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		EA8268BB22F25909006FBB4B /* Search Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EA8268B322F1FCF6006FBB4B /* SearchRecipeViewController.swift */,
+			);
+			path = "Search Controller";
+			sourceTree = "<group>";
+		};
+		EA8268BC22F2592E006FBB4B /* Recipe Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EA8268AD22F1F41A006FBB4B /* RecipeCellModel.swift */,
+				EA5D11A722F0905B003B5B58 /* RecipeTableViewCell.swift */,
+				EA5D11A822F0905B003B5B58 /* RecipeTableViewCell.xib */,
+			);
+			path = "Recipe Cell";
 			sourceTree = "<group>";
 		};
 		EAD702FA22F0E99500167418 /* Core Data */ = {
@@ -334,6 +350,7 @@
 				EA8268B522F1FCF6006FBB4B /* SearchRecipeViewController.swift in Sources */,
 				EA5D11D622F0C1D8003B5B58 /* PhotosManager.swift in Sources */,
 				EA8268AE22F1F41A006FBB4B /* RecipeCellModel.swift in Sources */,
+				EA8268BE22F2595E006FBB4B /* RecipeModel.swift in Sources */,
 				EA5D11CF22F0ADD2003B5B58 /* NetworkLogger.swift in Sources */,
 				EA5D11CD22F0ADCA003B5B58 /* HTTPTask.swift in Sources */,
 				EA5D11BE22F0AC48003B5B58 /* JSONParameterEncoder.swift in Sources */,
@@ -348,7 +365,6 @@
 				EA5D11AC22F090AF003B5B58 /* NibLoadable.swift in Sources */,
 				EA8268B822F2530C006FBB4B /* UISearchBar+Extensions.swift in Sources */,
 				EA5D119422F08E9E003B5B58 /* AppDelegate.swift in Sources */,
-				EA8268B222F1F623006FBB4B /* RecipeDataSourceDelegate.swift in Sources */,
 				EAD702FC22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift in Sources */,
 				EA5D11D822F0C3AE003B5B58 /* UIImageView+Extensions.swift in Sources */,
 				EA5D11D222F0B1D2003B5B58 /* RecipePuppyJSON.swift in Sources */,

@@ -26,37 +26,7 @@ class SearchRecipeViewController: UIViewController {
         recipeTableView.register(RecipeTableViewCell.nib, forCellReuseIdentifier: RecipeTableViewCell.reuseIdentifier)
         recipeTableView.estimatedRowHeight = 100
         recipeTableView.rowHeight = UITableView.automaticDimension
-        
-//        networkManager.getModel(RecipePuppyJSON.self, fromAPI: .search(title: "tomato")) { [weak self] (result) in
-//            switch result {
-//            case .success(let model):
-//                guard let results = model?.results else { return }
-//                for result in results {
-//                    var recipeCellModel = RecipeCellModel()
-//                    recipeCellModel.thumbnailUrl = result.thumbnail
-//                    recipeCellModel.title = result.title
-//                    recipeCellModel.ingredients = result.ingredients
-//                    self?.recipeCellModels.append(recipeCellModel)
-//                }
-//                DispatchQueue.main.async {
-//                    self?.recipeTableView.reloadData()
-//                }
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -71,15 +41,14 @@ extension SearchRecipeViewController: UISearchBarDelegate {
             self.recipeCellModels.removeAll()
             let oldValue = self.recipeCellModels.count
             var recipeCellModel = RecipeCellModel()
-            recipeCellModel.thumbnailUrl = "searching.thumbnail"
-            recipeCellModel.title = "searching.thumbnail.title"
-            recipeCellModel.ingredients = "searching.thumbnail.ingredients"
+            recipeCellModel.thumbnailUrl = ""
+            recipeCellModel.title = "Searching for..."
+            recipeCellModel.ingredients = "Ingredients..."
             self.recipeCellModels.append(recipeCellModel)
             DispatchQueue.main.async {
                 if let indexPaths = DiffUtil.getInsertionItems(oldValue: oldValue, newValue: self.recipeCellModels.count) {
                     DiffUtil.reloadTableViewRows(self.recipeTableView, atIndexPaths: indexPaths)
                 }
-                //self.recipeTableView.reloadData()
             }
             perform(#selector(self.reload(_:)), with: searchBar, afterDelay: 0.5)
         }
@@ -88,7 +57,7 @@ extension SearchRecipeViewController: UISearchBarDelegate {
     
     @objc func reload(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text, searchText.trimmingCharacters(in: .whitespaces) != "" else {
-            print("nothing to search")
+            // NOTHING TO SEARCH
             let oldValue = recipeCellModels.count
             recipeCellModels.removeAll()
             
@@ -97,8 +66,6 @@ extension SearchRecipeViewController: UISearchBarDelegate {
                 if let indexPaths = DiffUtil.getDeletionItems(oldValue: oldValue) {
                     self.recipeTableView.deleteRows(at: indexPaths, with: .fade)
                 }
-                //self.recipeTableView.reloadData()
-
             }
             return
         }
@@ -120,9 +87,9 @@ extension SearchRecipeViewController: UISearchBarDelegate {
 
                 if self.recipeCellModels.isEmpty {
                     var recipeCellModel = RecipeCellModel()
-                    recipeCellModel.thumbnailUrl = "result.thumbnail"
-                    recipeCellModel.title = "result.title"
-                    recipeCellModel.ingredients = "result.ingredients"
+                    recipeCellModel.thumbnailUrl = ""
+                    recipeCellModel.title = "Not found"
+                    recipeCellModel.ingredients = "No ingredients"
                     self.recipeCellModels.append(recipeCellModel)
                 }
                 
@@ -131,7 +98,6 @@ extension SearchRecipeViewController: UISearchBarDelegate {
                     if let indexPaths = DiffUtil.getInsertionItems(oldValue: oldValue, newValue: self.recipeCellModels.count) {
                         DiffUtil.reloadTableViewRows(self.recipeTableView, atIndexPaths: indexPaths, animation: .fade)
                     }
-                    //self.recipeTableView.reloadData()
                 }
             case .failure(let error):
                 print(error.localizedDescription)

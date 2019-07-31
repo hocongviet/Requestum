@@ -20,6 +20,7 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
     override func awakeFromNib() {
         super.awakeFromNib()
         recipeImageView.makeRounded()
+        recipeImageView.contentMode = .scaleAspectFill
         setSeparatorEndToEnd()
     }
     

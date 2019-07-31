@@ -89,10 +89,6 @@ class RecipeViewController: UIViewController {
 
 extension RecipeViewController: UITableViewDelegate {
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 200
-//    }
-    
 }
 
 extension RecipeViewController: UITableViewDataSource {
