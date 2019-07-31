@@ -16,9 +16,18 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
 
     static let reuseIdentifier = "RecipeTableViewCellIdentifier"
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         recipeImageView.makeRounded()
+        recipeImageView.contentMode = .scaleAspectFill
+        setSeparatorEndToEnd()
+    }
+    
+    private func setSeparatorEndToEnd() {
+        preservesSuperviewLayoutMargins = false
+        separatorInset = UIEdgeInsets.zero
+        layoutMargins = UIEdgeInsets.zero
     }
     
     override func layoutSubviews() {
@@ -31,9 +40,9 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
         // Configure the view for the selected state
     }
     
-    var recipePuppyModel: RecipeEntity? {
+    var recipePuppyEntity: RecipeEntity? {
         didSet {
-            if let thumbnail = recipePuppyModel?.thumbnail {
+            if let thumbnail = recipePuppyEntity?.thumbnail {
                 if thumbnail.isEmpty {
                     self.recipeImageView.image = #imageLiteral(resourceName: "empty-plate")
                 } else {
@@ -43,8 +52,25 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
                 }
             }
             
-            recipeTitle.text = recipePuppyModel?.title
-            recipeIngredients.text = recipePuppyModel?.ingredients
+            recipeTitle.text = recipePuppyEntity?.title
+            recipeIngredients.text = recipePuppyEntity?.ingredients
+        }
+    }
+    
+    var recipeCellModel: RecipeCellModel? {
+        didSet {
+            if let thumbnailUrl = recipeCellModel?.thumbnailUrl {
+                if thumbnailUrl.isEmpty {
+                    self.recipeImageView.image = #imageLiteral(resourceName: "empty-plate")
+                } else {
+                    PhotosManager.saveImageFromUrl(URL(string: thumbnailUrl)) { (image) in
+                        self.recipeImageView.image = image
+                    }
+                }
+            }
+            
+            recipeTitle.text = recipeCellModel?.title
+            recipeIngredients.text = recipeCellModel?.ingredients
         }
     }
     

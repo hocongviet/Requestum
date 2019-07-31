@@ -19,14 +19,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uIb-4N-tC7">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.95890945196151733" green="0.95963555574417114" blue="0.95902186632156372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" red="0.17589887976646423" green="0.53077411651611328" blue="0.020394867286086082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uIb-4N-tC7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FHr-1Y-M6Y"/>
-                            <constraint firstItem="uIb-4N-tC7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Inj-Bt-wWY"/>
+                            <constraint firstItem="uIb-4N-tC7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Inj-Bt-wWY"/>
                             <constraint firstAttribute="bottom" secondItem="uIb-4N-tC7" secondAttribute="bottom" id="Q9I-QZ-YP5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uIb-4N-tC7" secondAttribute="trailing" id="QnL-2h-L4C"/>
                         </constraints>

@@ -14,8 +14,9 @@ class RecipeViewController: UIViewController {
     let networkManager = NetworkManager(environment: .recipePuppy)
 
     @IBOutlet weak var recipeTableView: UITableView!
-    let searchController = UISearchController(searchResultsController: nil)
-
+    let searchRecipeVC = SearchRecipeViewController()
+    var searchController: UISearchController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
@@ -32,12 +33,28 @@ class RecipeViewController: UIViewController {
     }
     
     private func setSearchBar() {
-//        searchController.searchBar.barTintColor = .white
-        //searchController.searchBar.tintColor = .white
-        //searchController.searchBar.backgroundColor = .white
+        // Set delegate for did select actions
+        //searchController?.searchBar.delegate = searchRecipeVC
 
+        // Setup search controller
+        searchController = UISearchController(searchResultsController: searchRecipeVC)
+        searchController?.searchBar.delegate = searchRecipeVC
+        //searchController?.dimsBackgroundDuringPresentation = false
+        //searchController?.hidesNavigationBarDuringPresentation = false
+        searchController?.searchBar.placeholder = "Search"
+        definesPresentationContext = true
+        //navigationItem.titleView = searchController?.searchBar
+        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        
+        if let txfSearchField = searchController?.searchBar.value(forKey: "_searchField") as? UITextField {
+            txfSearchField.borderStyle = .none
+            txfSearchField.backgroundColor = .white
+            txfSearchField.layer.cornerRadius = 12
+            txfSearchField.layer.masksToBounds = true
+        }
+        
     }
     
     private func setTableView() {
@@ -72,10 +89,6 @@ class RecipeViewController: UIViewController {
 
 extension RecipeViewController: UITableViewDelegate {
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 200
-//    }
-    
 }
 
 extension RecipeViewController: UITableViewDataSource {
@@ -86,7 +99,7 @@ extension RecipeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.reuseIdentifier, for: indexPath) as! RecipeTableViewCell
         let recipies = RecipeEntity.getAllRecipes()
-        cell.recipePuppyModel = recipies?[indexPath.row]
+        cell.recipePuppyEntity = recipies?[indexPath.row]
         return cell
     }
 
