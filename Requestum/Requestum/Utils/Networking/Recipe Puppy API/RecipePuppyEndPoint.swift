@@ -16,7 +16,7 @@ public enum RecipePuppyApi {
     
     // Private API
     case omelet
-    case search(title: Int)
+    case search(title: String)
     
 }
 
@@ -35,7 +35,7 @@ extension RecipePuppyApi: EndpointType {
             return path.absoluteString
         case .search(let title):
             var components = URLComponents()
-            components.queryItems = [URLQueryItem(name: "q", value: "\(title)")]
+            components.queryItems = [URLQueryItem(name: "q", value: title)]
             guard let path = components.url else { return String() }
             return path.absoluteString
         }

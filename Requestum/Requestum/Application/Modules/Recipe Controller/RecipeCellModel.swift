@@ -11,5 +11,5 @@ import Foundation
 struct RecipeCellModel {
     var thumbnailUrl: String?
     var title: String?
-    var ingridients: String?
+    var ingredients: String?
 }

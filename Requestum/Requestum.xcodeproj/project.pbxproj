@@ -32,7 +32,6 @@
 		EA8268AE22F1F41A006FBB4B /* RecipeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268AD22F1F41A006FBB4B /* RecipeCellModel.swift */; };
 		EA8268B222F1F623006FBB4B /* RecipeDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268B122F1F623006FBB4B /* RecipeDataSourceDelegate.swift */; };
 		EA8268B522F1FCF6006FBB4B /* SearchRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8268B322F1FCF6006FBB4B /* SearchRecipeViewController.swift */; };
-		EA8268B622F1FCF6006FBB4B /* SearchRecipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8268B422F1FCF6006FBB4B /* SearchRecipeViewController.xib */; };
 		EAD702F922F0E8B700167418 /* Requestum.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAD702F722F0E8B700167418 /* Requestum.xcdatamodeld */; };
 		EAD702FC22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD702FB22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift */; };
 		EAD702FE22F0EA2200167418 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD702FD22F0EA2200167418 /* CoreDataStack.swift */; };
@@ -66,7 +65,6 @@
 		EA8268AD22F1F41A006FBB4B /* RecipeCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCellModel.swift; sourceTree = "<group>"; };
 		EA8268B122F1F623006FBB4B /* RecipeDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDataSourceDelegate.swift; sourceTree = "<group>"; };
 		EA8268B322F1FCF6006FBB4B /* SearchRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipeViewController.swift; sourceTree = "<group>"; };
-		EA8268B422F1FCF6006FBB4B /* SearchRecipeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchRecipeViewController.xib; sourceTree = "<group>"; };
 		EAD702F822F0E8B700167418 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		EAD702FB22F0E9B100167418 /* RecipeEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EAD702FD22F0EA2200167418 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 				EA5D11A522F08FD4003B5B58 /* RecipeViewController.swift */,
 				EA8268B122F1F623006FBB4B /* RecipeDataSourceDelegate.swift */,
 				EA8268B322F1FCF6006FBB4B /* SearchRecipeViewController.swift */,
-				EA8268B422F1FCF6006FBB4B /* SearchRecipeViewController.xib */,
 			);
 			path = "Recipe Controller";
 			sourceTree = "<group>";
@@ -317,7 +314,6 @@
 				EA5D119E22F08E9F003B5B58 /* LaunchScreen.storyboard in Resources */,
 				EA5D119B22F08E9F003B5B58 /* Assets.xcassets in Resources */,
 				EA5D119922F08E9E003B5B58 /* Main.storyboard in Resources */,
-				EA8268B622F1FCF6006FBB4B /* SearchRecipeViewController.xib in Resources */,
 				EA5D11AA22F0905B003B5B58 /* RecipeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

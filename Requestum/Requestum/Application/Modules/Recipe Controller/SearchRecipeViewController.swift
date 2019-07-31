@@ -9,15 +9,42 @@
 import UIKit
 
 class SearchRecipeViewController: UIViewController {
-    @IBOutlet weak var recipeTableView: UITableView!
+    let networkManager = NetworkManager(environment: .recipePuppy)
+
+    let recipeTableView = UITableView()
+    var recipeCellModels = [RecipeCellModel]()
     
+    override func loadView() {
+        view = recipeTableView
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.init(hexString: "F5F5F5")
+        
         recipeTableView.delegate = self
         recipeTableView.dataSource = self
         recipeTableView.register(RecipeTableViewCell.nib, forCellReuseIdentifier: RecipeTableViewCell.reuseIdentifier)
         recipeTableView.estimatedRowHeight = 100
         recipeTableView.rowHeight = UITableView.automaticDimension
+        
+        networkManager.getModel(RecipePuppyJSON.self, fromAPI: .search(title: "tomato")) { [weak self] (result) in
+            switch result {
+            case .success(let model):
+                guard let results = model?.results else { return }
+                for result in results {
+                    var recipeCellModel = RecipeCellModel()
+                    recipeCellModel.thumbnailUrl = result.thumbnail
+                    recipeCellModel.title = result.title
+                    recipeCellModel.ingredients = result.ingredients
+                    self?.recipeCellModels.append(recipeCellModel)
+                }
+                DispatchQueue.main.async {
+                    self?.recipeTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 
 
@@ -45,13 +72,12 @@ extension SearchRecipeViewController: UITableViewDelegate {
 
 extension SearchRecipeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RecipeEntity.getRecipeCount()
+        return recipeCellModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.reuseIdentifier, for: indexPath) as! RecipeTableViewCell
-        let recipies = RecipeEntity.getAllRecipes()
-        cell.recipePuppyEntity = recipies?[indexPath.row]
+        cell.recipeCellModel = recipeCellModels[indexPath.row]
         return cell
     }
 }

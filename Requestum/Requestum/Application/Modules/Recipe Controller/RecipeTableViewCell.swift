@@ -56,4 +56,21 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
         }
     }
     
+    var recipeCellModel: RecipeCellModel? {
+        didSet {
+            if let thumbnailUrl = recipeCellModel?.thumbnailUrl {
+                if thumbnailUrl.isEmpty {
+                    self.recipeImageView.image = #imageLiteral(resourceName: "empty-plate")
+                } else {
+                    PhotosManager.saveImageFromUrl(URL(string: thumbnailUrl)) { (image) in
+                        self.recipeImageView.image = image
+                    }
+                }
+            }
+            
+            recipeTitle.text = recipeCellModel?.title
+            recipeIngredients.text = recipeCellModel?.ingredients
+        }
+    }
+    
 }
