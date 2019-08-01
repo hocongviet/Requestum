@@ -11,8 +11,8 @@ import SafariServices
 
 class SearchRecipeViewController: UIViewController {
 
-    let searchRecipeModel = SearchRecipeModel()
-    let recipeTableView = UITableView()
+    private let searchRecipeModel = SearchRecipeModel()
+    private let recipeTableView = UITableView()
     
     override func loadView() {
         super.loadView()
@@ -69,7 +69,8 @@ extension SearchRecipeViewController: UISearchBarDelegate {
 extension SearchRecipeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print()
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+
         guard let validUrlString = searchRecipeModel.recipeCellModels[indexPath.row].href else { return }
         guard let url = URL(string: validUrlString) else {
             return

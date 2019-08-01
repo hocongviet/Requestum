@@ -10,7 +10,7 @@ import Foundation
 
 class RecipeModel {
     
-    let networkManager = NetworkManager(environment: .recipePuppy)
+    private let networkManager = NetworkManager(environment: .recipePuppy)
     
     func getRecipiesFromAPI(completion: @escaping () -> ()) {
         DispatchQueue.global().async {
@@ -19,7 +19,7 @@ class RecipeModel {
                 case .success(let model):
                     guard let results = model?.results else { return }
                     for result in results {
-                        RecipeEntity.createRecipeEntity(thumbnailUrl: result.thumbnail, title: result.title, ingredients: result.ingredients)
+                        RecipeEntity.createRecipeEntity(thumbnailUrl: result.thumbnail, title: result.title, ingredients: result.ingredients, href: result.href)
                     }
                     DispatchQueue.main.async {
                         completion()

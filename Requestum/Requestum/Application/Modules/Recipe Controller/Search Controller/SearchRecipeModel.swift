@@ -9,7 +9,7 @@
 import Foundation
 
 class SearchRecipeModel {
-    let networkManager = NetworkManager(environment: .recipePuppy)
+    private let networkManager = NetworkManager(environment: .recipePuppy)
     private(set) var recipeCellModels = [RecipeCellModel]()
     
     func mappingSearchingFor(completion: @escaping ([IndexPath]) -> ()) {

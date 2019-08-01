@@ -8,13 +8,14 @@
 
 import UIKit
 import CoreData
+import SafariServices
 
 class RecipeViewController: UIViewController {
 
-    let recipeModel = RecipeModel()
+    private let recipeModel = RecipeModel()
     @IBOutlet weak var recipeTableView: UITableView!
-    let searchRecipeVC = SearchRecipeViewController()
-    var searchController: UISearchController?
+    private let searchRecipeVC = SearchRecipeViewController()
+    private var searchController: UISearchController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,17 @@ class RecipeViewController: UIViewController {
 }
 
 extension RecipeViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+
+        let recipies = RecipeEntity.getAllRecipes()
+        guard let validUrlString = recipies?[indexPath.row].href else { return }
+        guard let url = URL(string: validUrlString) else {
+            return
+        }
+        let svc = SFSafariViewController(url: url)
+        present(svc, animated: true, completion: nil)
+    }
 }
 
 extension RecipeViewController: UITableViewDataSource {
