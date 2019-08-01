@@ -36,7 +36,11 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
                     self.recipeImageView.image = #imageLiteral(resourceName: "empty-plate")
                 } else {
                     PhotosManager.saveImageFromUrl(URL(string: thumbnail)) { (image) in
-                        self.recipeImageView.image = image
+                        if let image = image {
+                            self.recipeImageView.image = image
+                        } else {
+                            self.recipeImageView.image = #imageLiteral(resourceName: "empty-plate")
+                        }
                     }
                 }
             }
