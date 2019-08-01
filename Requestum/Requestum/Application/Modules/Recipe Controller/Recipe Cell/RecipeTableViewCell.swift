@@ -35,10 +35,10 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
                 if thumbnail.isEmpty {
                     self.recipeImageView.image = #imageLiteral(resourceName: "empty-plate")
                 } else {
-                    PhotosManager.saveImageFromUrl(URL(string: thumbnail)) { (image) in
-                        self.recipeImageView.image = image
-                    }
+                    self.recipeImageView.image = UIImage(data: thumbnail) 
                 }
+            } else {
+                self.recipeImageView.image = #imageLiteral(resourceName: "empty-plate")
             }
             
             recipeTitle.text = recipePuppyEntity?.title

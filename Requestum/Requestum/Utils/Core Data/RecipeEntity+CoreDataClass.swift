@@ -47,11 +47,11 @@ class RecipeEntity: NSManagedObject {
         return nil
     }
     
-    class func createRecipeEntity(thumbnailUrl: String?, title: String?, ingredients: String?, href: String?) {
+    class func createRecipeEntity(thumbnailPngData: Data?, title: String?, ingredients: String?, href: String?) {
         if RecipeEntity.getRecipeEntity(title) == nil {
             let recipeEntity = RecipeEntity(context: CoreDataStack.shared.backgroundManagedObjectContext)
-
-            recipeEntity.thumbnail = thumbnailUrl
+        
+            recipeEntity.thumbnail = thumbnailPngData
             recipeEntity.title = title
             recipeEntity.ingredients = ingredients
             recipeEntity.href = href
