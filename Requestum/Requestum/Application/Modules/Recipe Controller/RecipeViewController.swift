@@ -8,21 +8,24 @@
 
 import UIKit
 import CoreData
+import SafariServices
 
 class RecipeViewController: UIViewController {
-    
-    let networkManager = NetworkManager(environment: .recipePuppy)
 
+    private let recipeModel = RecipeModel()
+    
     @IBOutlet weak var recipeTableView: UITableView!
-    let searchRecipeVC = SearchRecipeViewController()
-    var searchController: UISearchController?
+    private let searchRecipeVC = SearchRecipeViewController()
+    private var searchController: UISearchController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         setSearchBar()
         setTableView()
-        getRecipiesFromAPI()
+        recipeModel.getRecipiesFromAPI {
+            self.recipeTableView.reloadData()
+        }
     }
     
     private func setNavigationBar() {
@@ -33,28 +36,12 @@ class RecipeViewController: UIViewController {
     }
     
     private func setSearchBar() {
-        // Set delegate for did select actions
-        //searchController?.searchBar.delegate = searchRecipeVC
-
         // Setup search controller
         searchController = UISearchController(searchResultsController: searchRecipeVC)
         searchController?.searchBar.delegate = searchRecipeVC
-        //searchController?.dimsBackgroundDuringPresentation = false
-        //searchController?.hidesNavigationBarDuringPresentation = false
-        searchController?.searchBar.placeholder = "Search"
         definesPresentationContext = true
-        //navigationItem.titleView = searchController?.searchBar
-        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        
-        if let txfSearchField = searchController?.searchBar.value(forKey: "_searchField") as? UITextField {
-            txfSearchField.borderStyle = .none
-            txfSearchField.backgroundColor = .white
-            txfSearchField.layer.cornerRadius = 12
-            txfSearchField.layer.masksToBounds = true
-        }
-        
     }
     
     private func setTableView() {
@@ -65,30 +52,20 @@ class RecipeViewController: UIViewController {
         recipeTableView.rowHeight = UITableView.automaticDimension
     }
     
-    private func getRecipiesFromAPI() {
-        DispatchQueue.global().async {
-            self.networkManager.getModel(RecipePuppyJSON.self, fromAPI: .omelet) { [weak self] (result) in
-                switch result {
-                case .success(let model):
-                    guard let results = model?.results else { return }
-                    for result in results {
-                        RecipeEntity.createRecipeEntity(thumbnailUrl: result.thumbnail, title: result.title, ingredients: result.ingredients)
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self?.recipeTableView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        }
-    }
-
 }
 
 extension RecipeViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+
+        let recipies = RecipeEntity.getAllRecipes()
+        guard let validUrlString = recipies?[indexPath.row].href else { return }
+        guard let url = URL(string: validUrlString) else {
+            return
+        }
+        let svc = SFSafariViewController(url: url)
+        present(svc, animated: true, completion: nil)
+    }
 }
 
 extension RecipeViewController: UITableViewDataSource {
@@ -102,5 +79,4 @@ extension RecipeViewController: UITableViewDataSource {
         cell.recipePuppyEntity = recipies?[indexPath.row]
         return cell
     }
-
 }

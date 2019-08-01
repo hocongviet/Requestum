@@ -13,17 +13,13 @@ public enum NetworkEnvironment: String {
 }
 
 public enum RecipePuppyApi {
-    
     // Private API
     case omelet
     case search(title: String)
-    
 }
 
 extension RecipePuppyApi: EndpointType {
-    
     var endpoint: String {
-        
         switch self {
         case .omelet:
             var components = URLComponents()
@@ -39,7 +35,6 @@ extension RecipePuppyApi: EndpointType {
             guard let path = components.url else { return String() }
             return path.absoluteString
         }
-
     }
     
     var httpMethod: HTTPMethod {

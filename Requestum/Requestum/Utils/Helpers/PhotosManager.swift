@@ -8,12 +8,16 @@
 
 import Photos
 
-public struct PhotosManager {
-    
-    public static func saveImageFromUrl(_ url: URL?, completion: @escaping (UIImage) -> ()) {
+struct PhotosManager {
+    static func saveImageFromUrl(_ url: URL?, completion: @escaping (UIImage?) -> ()) {
         guard let url = url else { return }
         DispatchQueue.global(qos: .userInitiated).async {
-            guard let data = try? Data(contentsOf: url) else  { return }
+            guard let data = try? Data(contentsOf: url) else  {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
+            }
             if let image = UIImage(data: data) {
                 DispatchQueue.main.async {
                     completion(image)
