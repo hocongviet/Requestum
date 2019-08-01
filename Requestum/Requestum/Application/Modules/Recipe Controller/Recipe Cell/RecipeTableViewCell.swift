@@ -10,13 +10,12 @@ import UIKit
 
 class RecipeTableViewCell: UITableViewCell, NibLoadable {
     
+    static let reuseIdentifier = "RecipeTableViewCellIdentifier"
+    
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var recipeTitle: UILabel!
     @IBOutlet weak var recipeIngredients: UILabel!
 
-    static let reuseIdentifier = "RecipeTableViewCellIdentifier"
-
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         recipeImageView.makeRounded()
@@ -29,17 +28,7 @@ class RecipeTableViewCell: UITableViewCell, NibLoadable {
         separatorInset = UIEdgeInsets.zero
         layoutMargins = UIEdgeInsets.zero
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+   
     var recipePuppyEntity: RecipeEntity? {
         didSet {
             if let thumbnail = recipePuppyEntity?.thumbnail {

@@ -13,6 +13,7 @@ import SafariServices
 class RecipeViewController: UIViewController {
 
     private let recipeModel = RecipeModel()
+    
     @IBOutlet weak var recipeTableView: UITableView!
     private let searchRecipeVC = SearchRecipeViewController()
     private var searchController: UISearchController?

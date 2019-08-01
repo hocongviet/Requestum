@@ -9,7 +9,6 @@
 import UIKit
 
 struct DiffUtil {
-    
     static func getInsertionItems(oldValue: Int, newValue: Int) -> [IndexPath]? {
         if newValue == 0 {
             return [IndexPath()]

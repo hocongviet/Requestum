@@ -45,7 +45,6 @@ extension SearchRecipeViewController: UISearchBarDelegate {
             }
             perform(#selector(self.reload(_:)), with: searchBar, afterDelay: 0.5)
         }
-        
     }
     
     @objc func reload(_ searchBar: UISearchBar) {
@@ -62,7 +61,6 @@ extension SearchRecipeViewController: UISearchBarDelegate {
             searchBar.isLoading = false
             DiffUtil.reloadTableViewRows(self.recipeTableView, atIndexPaths: indexPaths, animation: .fade)
         }
-        
     }
 }
 
