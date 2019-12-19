@@ -1,0 +1,6 @@
+framework module Pods_Requestum {
+  umbrella header "Pods-Requestum-umbrella.h"
+
+  export *
+  module * { export * }
+}
