@@ -7,6 +7,7 @@
 //
 
 import Photos
+import UIKit
 
 struct PhotosManager {
     static func saveImageFromUrl(_ url: URL?, completion: @escaping (UIImage?) -> ()) {
