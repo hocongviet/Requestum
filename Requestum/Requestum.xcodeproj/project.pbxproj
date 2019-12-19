@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A59BCF8735F27BDC8FE97D39 /* Pods_Requestum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DA2B6F5177B3D374FD9CAF /* Pods_Requestum.framework */; };
 		EA3ED5A223AC41D800C9ADA4 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ED5A123AC41D800C9ADA4 /* R.generated.swift */; };
+		EA3ED5A423AC426800C9ADA4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ED5A323AC426800C9ADA4 /* TabBarController.swift */; };
 		EA5D119422F08E9E003B5B58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D119322F08E9E003B5B58 /* AppDelegate.swift */; };
 		EA5D119922F08E9E003B5B58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5D119722F08E9E003B5B58 /* Main.storyboard */; };
 		EA5D119B22F08E9F003B5B58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5D119A22F08E9F003B5B58 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		1A24037B3F1BA18E67704BC1 /* Pods-Requestum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Requestum.debug.xcconfig"; path = "Target Support Files/Pods-Requestum/Pods-Requestum.debug.xcconfig"; sourceTree = "<group>"; };
 		5AF1F4C112429BDA260C1C52 /* Pods-Requestum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Requestum.release.xcconfig"; path = "Target Support Files/Pods-Requestum/Pods-Requestum.release.xcconfig"; sourceTree = "<group>"; };
 		EA3ED5A123AC41D800C9ADA4 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		EA3ED5A323AC426800C9ADA4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		EA5D119022F08E9E003B5B58 /* Requestum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Requestum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5D119322F08E9E003B5B58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA5D119822F08E9E003B5B58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,11 +116,11 @@
 		EA5D118722F08E9E003B5B58 = {
 			isa = PBXGroup;
 			children = (
+				2E4EBC0113B6A39A02C115DC /* Frameworks */,
+				7BFE4D9E65D205A51DFD958D /* Pods */,
+				EA5D119122F08E9E003B5B58 /* Products */,
 				EA3ED5A123AC41D800C9ADA4 /* R.generated.swift */,
 				EA5D119222F08E9E003B5B58 /* Requestum */,
-				EA5D119122F08E9E003B5B58 /* Products */,
-				7BFE4D9E65D205A51DFD958D /* Pods */,
-				2E4EBC0113B6A39A02C115DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				EA5D119322F08E9E003B5B58 /* AppDelegate.swift */,
+				EA3ED5A323AC426800C9ADA4 /* TabBarController.swift */,
 				EA5D11B322F09BF5003B5B58 /* Modules */,
 				EA5D11B522F09C6A003B5B58 /* Storyboards */,
 				EA5D11B622F09C9E003B5B58 /* Supporting files */,
@@ -464,6 +467,7 @@
 				EA5D11D822F0C3AE003B5B58 /* UIImageView+Extensions.swift in Sources */,
 				EA5D11D222F0B1D2003B5B58 /* RecipePuppyJSON.swift in Sources */,
 				EAD702FE22F0EA2200167418 /* CoreDataStack.swift in Sources */,
+				EA3ED5A423AC426800C9ADA4 /* TabBarController.swift in Sources */,
 				EA5D11C722F0ADA9003B5B58 /* EndpointType.swift in Sources */,
 				EA5D11CB22F0ADC0003B5B58 /* HTTPMethod.swift in Sources */,
 				EA5D11A622F08FD4003B5B58 /* RecipeViewController.swift in Sources */,
